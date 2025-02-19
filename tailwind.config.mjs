@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        vazir: "vazir",
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
