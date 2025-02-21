@@ -121,7 +121,7 @@ const Tablo = [
   },
   {
     id: "11",
-    avatar: "/img/pic11.jpg",
+    avatar: "/img/pic12.jpg",
     province: "تهران",
     city: "شهریار",
     size: "4×3 متر",
@@ -133,7 +133,7 @@ const Tablo = [
   },
   {
     id: "12",
-    avatar: "/img/pic12.jpg",
+    avatar: "/img/pic24.jpg",
     province: "تهران",
     city: "شهریار",
     size: "4×3 متر",
@@ -226,6 +226,7 @@ const Tablo = [
     lat: 35.4895,
     lng: 51.5578,
     mediatype: "لمپوست",
+   
   },
   {
     id: "20",
@@ -241,7 +242,7 @@ const Tablo = [
   },
   {
     id: "21",
-    avatar: "/img/pic21.jpg",
+    avatar: "/img/pic30.jpg",
     province: "قزوین",
     city: "تاکستان",
     size: "6×2.5 متر",
@@ -249,7 +250,7 @@ const Tablo = [
     price: "29/000/000 میلیون تومان",
     lat: 36.0521,
     lng: 49.8364,
-    mediatype: "عرشه پل",
+    mediatype: "عرشه پل"
   },
   {
     id: "22",
