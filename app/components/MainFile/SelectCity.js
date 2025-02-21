@@ -2,7 +2,7 @@ import Mydata from "../main/Mydata";
 import Tablo from "@/components/data/Tablo";
 function SelectCity() {
   return (
-    <div dir="rtl">
+    <div dir="rtl" className="mt-16">
       <div className=" flex flex-col  w-[95%] h-[264px] bg-slate-300 m-auto ">
         <form className="  flex flex-col items-center justify-around w-[100%] h-[264px] ">
           <label className=" pt-4 mb-2 text-base font-medium text-gray-900 dark:text-white">
