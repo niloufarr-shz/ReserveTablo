@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect } from 'react'
-import Phoneforme from '@/components/Logins/Phoneforme'
+import Phoneforme from "../../components/Logins/Phoneforme"
 function page() {
 
 

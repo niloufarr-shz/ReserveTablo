@@ -9,7 +9,8 @@
 .rmdp-input {
   padding-top: 15px !important;
   padding-bottom: 15px !important;
- 
+
+  width: 160px;
 }
 .rmdp-ep-arrow {
   left: 100px !important;
