@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 
-import Tablo from "@/components/data/Tablo";
+import Tablo from "../data/Tablo";
 import Link from "next/link";
 import Image from "next/image";
 

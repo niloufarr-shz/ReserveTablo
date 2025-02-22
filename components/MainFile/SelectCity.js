@@ -1,5 +1,5 @@
 import Mydata from "../main/Mydata";
-import Tablo from "@/components/data/Tablo";
+import Tablo from "../data/Tablo";
 function SelectCity() {
   return (
     <div dir="rtl" className="mt-16">

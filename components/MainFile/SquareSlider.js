@@ -45,8 +45,8 @@ const SquareSlider = () => {
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <div className="w-[200px] h-[200px] flex flex-col items-center justify-center shadow-lg relative m-auto bg-gray-100 rounded-lg">
-              <div className="text-purple-800 text-[90px] mb-2">
+            <div className="w-[200px] h-[200px] flex flex-col items-center justify-center shadow-lg relative m-auto bg-blue-100 rounded-lg">
+              <div className="text-blue-800 text-[90px] mb-2">
                 {slide.icon}
               </div>
               <h1 className="text-gray-700 text-lg font-semibold">
@@ -57,10 +57,10 @@ const SquareSlider = () => {
         ))}
       </Swiper>
 
-      <button className="custom-next absolute top-1/2 -left-[50px] transform -translate-y-1/2 text-purple-800 text-3xl bg-transparent">
+      <button className="custom-next absolute top-1/2 -left-[50px] transform -translate-y-1/2 text-blue-800 text-3xl bg-transparent">
         ❯
       </button>
-      <button className="custom-prev absolute top-1/2 -right-[50px] transform -translate-y-1/2 text-purple-800 text-3xl bg-transparent">
+      <button className="custom-prev absolute top-1/2 -right-[50px] transform -translate-y-1/2 text-blue-800 text-3xl bg-transparent">
         ❮
       </button>
     </div>
