@@ -6,22 +6,14 @@ import "swiper/css/free-mode";
 import Tablo from "../data/Tablo"
 import Card from "../mediacard/Card";
 
-
-function Mydata({ filteredData }) {
-
-  const getRandomItems = (arr, num) => {
-    const shuffled = [...arr].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, num);
-  };
-
-  const randomTablo = getRandomItems(Tablo, 8);
-
+function Searchdata({ filteredData }) {
   return (
-    <div className="w-[95%] m-auto  ">
-      <h2 className="text-right">پیشنهادی های این ماه</h2>
-      {/* {filteredData.length === 0 ? (
+    <>
+      <div className="w-[95%] m-auto  ">
+      <h2 className="text-right">جستجو</h2>
+     {filteredData.length === 0 ? (
         <div className="w-[350px] h-[70px] m-auto mt-5 ">
-          <p className="text-center text-[24px] border text-red-700 border-black ">
+          <p className="text-center text-[24px] border border-black ">
             موردی یافت نشد
           </p>
         </div>
@@ -43,17 +35,16 @@ function Mydata({ filteredData }) {
           }}
         >
           {filteredData.map((mamad) => (
-            <SwiperSlide className="bg-red-200" key={mamad.id}>
+            <SwiperSlide className="" key={mamad.id}>
               <Card myfilter={[mamad]} />
             </SwiperSlide>
           ))}
         </Swiper>
-      )} */}
+      )} 
 
-<Card myfilter={randomTablo}/>
 
-    </div>
-  );
+    </div></>
+  )
 }
 
-export default Mydata;
+export default Searchdata

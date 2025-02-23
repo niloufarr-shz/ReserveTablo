@@ -32,11 +32,24 @@ const SquareSlider = () => {
   ];
 
   return (
-    <div dir="rtl" className="w-[80%] flex justify-center m-auto relative">
+    <div dir="rtl" className="w-[80%] mb-3 mt-8 flex justify-center m-auto relative">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={20}
-        slidesPerView={5}
+        breakpoints={{
+          320: {
+            slidesPerView: 1.5,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 3.5,
+            spaceBetween: 10,
+          },
+          920: {
+            slidesPerView: 4.5,
+            spaceBetween: 10,
+          },
+        }}
         loop={true}
         navigation={{
           nextEl: ".custom-next",

@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 function Card({ myfilter }) {
+  console.log(myfilter)
   return (
     <div className="w-full  flex flex-wrap justify-center">
       {myfilter.map((card) => (

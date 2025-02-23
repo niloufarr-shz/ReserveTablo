@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Mydata from "../main/Mydata";
 import Tablo from "../data/Tablo";
-
+import Searchdata from "../main/Searchdata";
 function SelectCity() {
   const [selectedCity, setSelectedCity] = useState("کرج");
   const [selectedMediaType, setSelectedMediaType] = useState("عرشه پل");
@@ -80,7 +80,7 @@ function SelectCity() {
         </div>
       </div>
 
-      {isDataVisible && <Mydata filteredData={filteredData} />}
+      {isDataVisible && <Searchdata filteredData={filteredData} />}
     </div>
   );
 }
