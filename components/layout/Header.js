@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 function Header() {
   return (
-    <div className="fixed top-0 left-0 w-full z-50 bg-blue-100 h-[70px] flex justify-around flex-row-reverse items-center">
+    <div className="fixed top-0 left-0 w-full z-50 bg-blue-200 h-[70px] flex justify-around flex-row-reverse items-center">
     <Link href="/">
       <Image src="/img/logo.png" height={50} width={50} />
     </Link>

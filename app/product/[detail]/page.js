@@ -104,11 +104,11 @@ export default function Page({ params }) {
 
             {/* پاراگراف ها  */}
             <div className="flex flex-col w-[100%]  lg:w-[60%] md:h-[500px]  justify-center items-center md:mt-10">
-              <p className="flex   bg-[#CBD5E1] w-[100%]   lg:w-[80%] h-[70px]  pr-3  rounded items-center relative">
+              <p className="flex   bg-blue-100 w-[100%]   lg:w-[80%] h-[70px]  pr-3  rounded items-center relative">
                 <span className="pr-10"> کد تابلو : {tablo.id} </span>
                 <ImQrcode className="absolute top-3  text-blue-800 size-6 " />
               </p>
-              <p className="flex   bg-[#CBD5E1]  w-[100%]  lg:w-[80%] h-[70px] mt-3 pr-3 rounded  items-center relative">
+              <p className="flex   bg-blue-100  w-[100%]  lg:w-[80%] h-[70px] mt-3 pr-3 rounded  items-center relative">
                 <span className="pr-10 md:pr-0 ml-2 md:mr-8 ">
                   {" "}
                   استان / شهر :{" "}
@@ -124,7 +124,7 @@ export default function Page({ params }) {
                   {tablo.province}{" "}
                 </span>
               </p>
-              <p className="flex   bg-[#CBD5E1]  w-[100%]  lg:w-[80%] h-[70px] mt-3 pr-3 rounded  items-center relative">
+              <p className="flex   bg-blue-100  w-[100%]  lg:w-[80%] h-[70px] mt-3 pr-3 rounded  items-center relative">
                 <span className="pr-10 ml-2 "> نوع رسانه : </span>
                 <span className="bg-gray-100 px-3 py-1 rounded mr-2 font-bold text-[14px]">
                   {" "}
@@ -133,18 +133,18 @@ export default function Page({ params }) {
 
                 <GiFilmProjector className="absolute top-3  text-blue-800 size-6 " />
               </p>
-              <p className="flex  bg-[#CBD5E1] w-[100%]  lg:w-[80%] h-[70px] mt-3 pr-3 rounded items-center  relative ">
+              <p className="flex  bg-blue-100 w-[100%]  lg:w-[80%] h-[70px] mt-3 pr-3 rounded items-center  relative ">
                 <span className="pr-10 ml-2 "> ابعاد : </span>
                 <span className="pr-3"> {tablo.size} </span>
                 <TfiRulerAlt2 className="absolute top-3  text-blue-800 size-6 " />
               </p>
-              <p className="flex  bg-[#CBD5E1] w-[100%]  lg:w-[80%] h-[70px] mt-3 pr-3 rounded items-center  relative ">
+              <p className="flex  bg-blue-100 w-[100%]  lg:w-[80%] h-[70px] mt-3 pr-3 rounded items-center  relative ">
                 <span className="pr-10 ml-2 "> قیمت : </span>
                 <span className=""> {tablo.price} </span>
                 <GiMoneyStack className="absolute top-3  text-blue-800 size-6 " />
               </p>
 
-              <p className="flex  h-[110px]  bg-[#CBD5E1]  w-[100%]  lg:w-[80%] mt-3 pr-3 rounded items-center relative">
+              <p className="flex  h-[110px]  bg-blue-100  w-[100%]  lg:w-[80%] mt-3 pr-3 rounded items-center relative">
                 <GiPathDistance className="absolute top-12 text-blue-800 size-6 " />
                 <span className="pr-10 ml-2 "> آدرس: </span>
                 <span className=""> {tablo.address} </span>
@@ -160,7 +160,7 @@ export default function Page({ params }) {
               address={tablo.address}
             />
             {/*   تقویم   */}
-            <div className=" w-[300px]  h-[450px] md:mr-5 lg:mr-14  md:mt-10 border border-solid md:w-[280px] md:h-[500px] bg-[#CBD5E1] rounded ">
+            <div className=" w-[300px]  h-[450px] md:mr-5 lg:mr-14  md:mt-10 border border-solid md:w-[280px] md:h-[500px] bg-blue-100 rounded ">
               <div className="persian-date-picker m-auto ">
                 <div className="mt-5">
                   <label className="flex flex-row justify-center">

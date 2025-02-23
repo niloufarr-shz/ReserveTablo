@@ -15,6 +15,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Link from "next/link";
 
 const SquareSlider = () => {
   const slides = [
@@ -45,6 +46,7 @@ const SquareSlider = () => {
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
+            <Link href={`/medias/${slide.title}`}>
             <div className="w-[200px] h-[200px] flex flex-col items-center justify-center shadow-lg relative m-auto bg-blue-100 rounded-lg">
               <div className="text-blue-800 text-[90px] mb-2">
                 {slide.icon}
@@ -53,6 +55,7 @@ const SquareSlider = () => {
                 {slide.title}
               </h1>
             </div>
+          </Link>
           </SwiperSlide>
         ))}
       </Swiper>
