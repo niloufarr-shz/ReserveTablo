@@ -43,7 +43,7 @@ function MapComponent({ lat, lng, address }) {
   return (
     <div
       dir="rtl"
-      className="absolute rounded my-5 md:my-0 h-[350px] w-[75%]  md:w-[260px]  
+      className="  rounded my-5 md:my-0 h-[350px] w-[75%]  md:w-[260px]  
      md:mt-0 border border-solid border-[#8b8a8a] m-auto -z-50 md:mr-8 lg:h-[400px] lg:mt-10   "
     >
       <MapContainer
@@ -71,7 +71,6 @@ export default function Page({ params }) {
   const mytype = Tablo.filter(
     (shayan) => shayan.mediatype == detail[0].mediatype
   );
-
   console.log(mytype);
 
   const [dateRange, setDateRange] = useState([null, null]);
@@ -95,23 +94,23 @@ export default function Page({ params }) {
         >
           <div className="lg:flex ">
             {/*  عکس بیلبورد   */}
-            <div className="w-full">
+            <div className="">
               <Image
                 src={tablo.avatar}
                 alt="bilboard"
-                className="rounded  w-[360px] h-[350px]   mb-3 lg:h-[400px] lg:w-[650px] lg:mt-10"
+                className="rounded  w-[360px] h-[350px]   mb-3 lg:h-[500px] lg:w-[450px] lg:mt-10"
                 height={400}
                 width={400}
               />
             </div>
 
             {/* پاراگراف ها  */}
-            <div className="flex flex-col w-full  md:h-[400px] lg:mx-20  justify-center items-center md:mt-10">
-              <p className="flex   bg-blue-100 w-[100%]   lg:w-[80%] h-[70px]  pr-3  rounded items-center relative">
+            <div className="flex flex-col w-[100%]  lg:w-[60%] md:h-[500px]  justify-center items-center md:mt-10">
+              <p className="flex   bg-[#CBD5E1] w-[100%]   lg:w-[80%] h-[70px]  pr-3  rounded items-center relative">
                 <span className="pr-10"> کد تابلو : {tablo.id} </span>
                 <ImQrcode className="absolute top-3  text-blue-800 size-6 " />
               </p>
-              <p className="flex   bg-blue-100  w-[100%]  lg:w-[80%] h-[70px] mt-3 pr-3 rounded  items-center relative">
+              <p className="flex   bg-[#CBD5E1]  w-[100%]  lg:w-[80%] h-[70px] mt-3 pr-3 rounded  items-center relative">
                 <span className="pr-10 md:pr-0 ml-2 md:mr-8 ">
                   {" "}
                   استان / شهر :{" "}
@@ -127,7 +126,7 @@ export default function Page({ params }) {
                   {tablo.province}{" "}
                 </span>
               </p>
-              <p className="flex   bg-blue-100  w-[100%]  lg:w-[80%] h-[70px] mt-3 pr-3 rounded  items-center relative">
+              <p className="flex   bg-[#CBD5E1]  w-[100%]  lg:w-[80%] h-[70px] mt-3 pr-3 rounded  items-center relative">
                 <span className="pr-10 ml-2 "> نوع رسانه : </span>
                 <span className="bg-gray-100 px-3 py-1 rounded mr-2 font-bold text-[14px]">
                   {" "}
@@ -136,94 +135,94 @@ export default function Page({ params }) {
 
                 <GiFilmProjector className="absolute top-3  text-blue-800 size-6 " />
               </p>
-              <p className="flex  bg-blue-100 w-[100%]  lg:w-[80%] h-[70px] mt-3 pr-3 rounded items-center  relative ">
+              <p className="flex  bg-[#CBD5E1] w-[100%]  lg:w-[80%] h-[70px] mt-3 pr-3 rounded items-center  relative ">
                 <span className="pr-10 ml-2 "> ابعاد : </span>
                 <span className="pr-3"> {tablo.size} </span>
                 <TfiRulerAlt2 className="absolute top-3  text-blue-800 size-6 " />
               </p>
-              <p className="flex  bg-blue-100 w-[100%]  lg:w-[80%] h-[70px] mt-3 pr-3 rounded items-center  relative ">
+              <p className="flex  bg-[#CBD5E1] w-[100%]  lg:w-[80%] h-[70px] mt-3 pr-3 rounded items-center  relative ">
                 <span className="pr-10 ml-2 "> قیمت : </span>
                 <span className=""> {tablo.price} </span>
                 <GiMoneyStack className="absolute top-3  text-blue-800 size-6 " />
               </p>
 
-              <p className="flex  h-[110px]  bg-blue-100  w-[100%]  lg:w-[80%] mt-3 pr-3 rounded items-center relative">
+              <p className="flex  h-[110px]  bg-[#CBD5E1]  w-[100%]  lg:w-[80%] mt-3 pr-3 rounded items-center relative">
                 <GiPathDistance className="absolute top-12 text-blue-800 size-6 " />
                 <span className="pr-10 ml-2 "> آدرس: </span>
                 <span className=""> {tablo.address} </span>
               </p>
             </div>
+          </div>
+          <div className="lg:flex">
+            {/*   نقشه  */}
+            <MapComponent
+              className="z-10 md:w-[100%]"
+              lat={tablo.lat}
+              lng={tablo.lng}
+              address={tablo.address}
+            />
+            {/*   تقویم   */}
+            <div className=" w-[300px]  h-[450px] md:mr-5 lg:mr-14  md:mt-10 border border-solid md:w-[280px] md:h-[500px] bg-[#CBD5E1] rounded ">
+              <div className="persian-date-picker m-auto ">
+                <div className="mt-5">
+                  <label className="flex flex-row justify-center">
+                    تاریخ شروع:
+                    <input
+                      className="w-[50%] rounded mr-2 px-2"
+                      readOnly
+                      value={dateRange[0]?.format("YYYY/MM/DD") || ""}
+                      placeholder="تاریخ  شروع"
+                    />
+                  </label>
+                </div>
+                <div className="mt-5">
+                  <label className="flex flex-row justify-center mr-2 ">
+                    تاریخ پایان:
+                    <input
+                      className="w-[51.5%] rounded mr-2  px-2"
+                      readOnly
+                      value={dateRange[1]?.format("YYYY/MM/DD") || ""}
+                      placeholder="تاریخ  پایان"
+                    />
+                  </label>
+                </div>
 
-            <div className="flex w-[100%] lg:h-[450px] h-[300px]  ">
-              {/*   نقشه  */}
-              <MapComponent
-                className="z-10 md:w-[100%]"
-                lat={tablo.lat}
-                lng={tablo.lng}
-                address={tablo.address}
-              />
+                <div className="flex justify-center mr-5 mt-5 ">
+                  <label className="justify-center ml-3">رزرو کنید :</label>
+                  <DatePicker
+                    className="fixed left-0 md:h-[290px] h-[230px]  "
+                    range
+                    calendar={persian}
+                    locale={persian_fa}
+                    format="YYYY/MM"
+                    value={dateRange}
+                    view="month"
+                    onlyMonthPicker={true}
+                    placeholder=" رزرو کنید  "
+                    onChange={handleDateChange}
+                    minDate={new DateObject({ calendar: persian }).set({
+                      day: 1,
+                      month: 1,
+                    })}
+                    maxDate={new DateObject({ calendar: persian }).set({
+                      day: 31,
+                      month: 24,
+                    })}
+                  />
+                </div>
+                <div className="flex justify-center  relative md:h-[350px] h-[300px] ">
+                  <button
+                    className=" w-[150px] h-[30px] bg-blue-800 absolute bottom-0 text-white rounded mb-3 text-[20px]  mt-5"
+                    onClick={handleSubmit}
+                  >
+                    ثبت
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          <div className="w-[70%] justify-center flex h-[350px] md:mr-5 lg:mr-14  border border-solid  md:h-[300px] bg-blue-100 rounded">
-              <label className="justify-center ml-3">رزرو کنید :</label>
-              <DatePicker
-                className=" fixed md:h-[290px] h-[230px]"
-                range
-                calendar={persian}
-                locale={persian_fa}
-                format="YYYY/MM"
-                value={dateRange}
-                view="month"
-                onlyMonthPicker={true}
-                placeholder=" رزرو کنید  "
-                onChange={handleDateChange}
-                minDate={new DateObject({ calendar: persian }).set({
-                  day: 1,
-                  month: 1,
-                })}
-                maxDate={new DateObject({ calendar: persian }).set({
-                  day: 31,
-                  month: 24,
-                })}
-              />
-            </div>
-            <div className="flex justify-center relative md:h-[350px] h-[300px]">
-              <button
-                className="w-[150px] h-[30px] bg-blue-800 absolute bottom-0 text-white rounded mb-3 text-[20px] mt-5"
-                onClick={handleSubmit}
-              >
-                ثبت
-              </button>
-            </div>
-
-
-
-
         </div>
       ))}
-
-      {/*   تقویم   */}
      
 
       <h3 className="flex justify-center mt-10"> بیلبورد های مشابه </h3>

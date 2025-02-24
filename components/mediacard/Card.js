@@ -11,6 +11,7 @@ function Card({ myfilter }) {
           key={card.id}
           className="h-[400px]  overflow-hidden rounded-t-3xl w-96 m-2    bg-blue-200"
         >
+            
           <Image
             className="w-full h-60"
             src={card.avatar}
@@ -23,7 +24,7 @@ function Card({ myfilter }) {
               {card.province} / {card.city}{" "}
             </p>
             <p className="text-right bg-white rounded-xl p-1">{card.size}</p>
-            <p className="text-right bg-white rounded-xl p-1 mr-3">{card.mediatype}</p>
+            <p className="text-right bg-white rounded-xl p-1 ml-1 mr-3">{card.mediatype}</p>
           </div>
 
           <p className="text-center">{card.address}</p>
