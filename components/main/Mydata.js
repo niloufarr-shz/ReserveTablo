@@ -3,12 +3,10 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
-import Tablo from "../data/Tablo"
+import Tablo from "../data/Tablo";
 import Card from "../mediacard/Card";
 
-
 function Mydata({ filteredData }) {
-
   const getRandomItems = (arr, num) => {
     const shuffled = [...arr].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, num);
@@ -18,7 +16,12 @@ function Mydata({ filteredData }) {
 
   return (
     <div className="w-[95%] m-auto  ">
-      <h2 className="text-right">پیشنهادی های این ماه</h2>
+      <div className="w-full flex flex-row-reverse items-center justify-around">
+        <h2 className="text-right w-[40%] sm:w-[15%] md:w-[20%] 2xl:w-[12%]  ">
+          پیشنهادی های این ماه
+        </h2>
+        <hr className="border-slate-600 w-[50%] sm:w-[85%] md:w-[77%] 2xl:w-[88%] h-[1px]" />
+      </div>
       {/* {filteredData.length === 0 ? (
         <div className="w-[350px] h-[70px] m-auto mt-5 ">
           <p className="text-center text-[24px] border text-red-700 border-black ">
@@ -50,8 +53,7 @@ function Mydata({ filteredData }) {
         </Swiper>
       )} */}
 
-<Card myfilter={randomTablo}/>
-
+      <Card myfilter={randomTablo} />
     </div>
   );
 }

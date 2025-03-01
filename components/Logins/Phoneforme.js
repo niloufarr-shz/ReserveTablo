@@ -41,11 +41,11 @@ function Phoneforme() {
   return (
     <>
       <Toaster />
-      <Otpform setdisplay={`${display ? "hidden" : "flex"}`} />
+      <Otpform setdisplay={`${display ? "hidden" : "flex"}`} phone={phone} />
       <div
         className={`m-auto w-full ${
           display ? "flex" : "hidden"
-        } flex-col items-center  bg-blue-50 font-vazir`}
+        } flex-col items-center bg-blue-100 font-vazir`}
       > 
         <div className="flex h-screen w-full flex-col items-center">
           <div className="flex h-[50vh] w-full flex-col items-center rounded-tl-[50px] rounded-tr-[50px] bg-primary">
@@ -75,7 +75,7 @@ function Phoneforme() {
               </p>
 
               <button
-                className={`text-gray flex justify-center items-center  mt-[70px] h-[50px] sm:w-[20%] w-[40%] rounded-[16px] text-[24px] font-normal ${
+                className={`text-gray flex justify-center items-center  mt-[70px] h-[50px] sm:w-[40%] w-[80%] rounded-[16px] text-[24px] font-normal ${
                   regtest ? "bg-blue-500" : "bg-blue-200"
                 }`}
                 type="submit"
@@ -86,7 +86,6 @@ function Phoneforme() {
                     loader ? "block" : "hidden"
                   }  rounded-full border-4 border-secondary text-secondary border-r-bg animate-spin`}
                 ></div>
-
                 <p> ارسال کد</p>
               </button>
             </form>

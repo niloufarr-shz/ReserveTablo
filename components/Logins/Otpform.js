@@ -1,20 +1,59 @@
-"use client";
+//"use client";
 import React, { useState, useEffect } from "react";
-
 import { OtpInput } from "reactjs-otp-input";
 import { IoMdTime } from "react-icons/io";
-import Image from "next/image";
+import Cookies from "js-cookie";
 
-function Otpform({setdisplay}) {
+import api from "../Services/Confgaxios";
+import axios from "axios";
+function Otpform({ setdisplay, phone }) {
+  const [accessToken, setAccesstoken] = useState();
+
   const [otp, setOtp] = useState("");
-  
+
   const handleChange = (otp) => {
     setOtp(otp);
     if (otp.length === 4) {
-      console.log(otp);
+      //api.post("verifycode", { phoneNumber: phone, code: otp }).then((res) => {
+      //});
+      axios
+        .post(
+          "http://localhost:9000/verifycode",
+          {
+            phoneNumber: phone,
+            code: otp,
+          },
+          {
+            withCredentials: true,
+          }
+        )
+        .then((res) => {
+          console.log(res);
+          localStorage.setItem("token", res.data.accessToken);
+          location.href = "/";
+        });
     }
   };
+
+  const tokenHandler = () => {
+    axios
+      .get("http://localhost:9000/isvalidtoken", {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          nonce: Math.round(Math.random() * 8), //تکراری نباشه :/
+        },
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(res);
+      });
+  };
+
   const [count, setCount] = useState(120);
+
+  useEffect(() => {
+    console.log(phone);
+  }, [setdisplay]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -34,15 +73,12 @@ function Otpform({setdisplay}) {
 
   return (
     <>
-      <div className={`m-auto ${setdisplay} h-screen w-full flex flex-col items-center bg-blue-50 font-vazir`}>
-      
-     
-        
+      <div
+        className={`m-auto ${setdisplay} h-screen w-full flex flex-col items-center bg-blue-50 font-vazir`}
+      >
         <div className="mt-20 flex h-[600px] w-[100%] flex-col items-center rounded-t-[50px] bg-primary">
           <div className="mt-11 flex w-[90%] items-start justify-center">
-            <h3 className="text-[16px] text-secondary">
-              کد تایید به شماره 09123456789 ارسال شد
-            </h3>
+            <h3 className="text-[16px] text-secondary">{`کد تایید به شماره ${phone} ارسال شد`}</h3>
           </div>
           <div className="mt-5 flex w-[90%] justify-center">
             <OtpInput
@@ -62,7 +98,6 @@ function Otpform({setdisplay}) {
                 border: "3px solid #Adacac",
                 outline: "none",
                 boxShadow: "0px 5px 12px rgba(173, 172, 172, .6)",
-                 
               }}
             />
           </div>
@@ -90,7 +125,10 @@ function Otpform({setdisplay}) {
             </div>
           </div>
           <div className="mt-14">
-            <button className="flex h-[50px] w-[250px] items-center justify-center rounded-[16px] bg-blue-500  ">
+            <button
+              onClick={tokenHandler}
+              className="flex h-[50px] w-[250px] items-center justify-center rounded-[16px] bg-blue-500  "
+            >
               <p className="text-[24px]  text-secondary "> ورود </p>
             </button>
           </div>

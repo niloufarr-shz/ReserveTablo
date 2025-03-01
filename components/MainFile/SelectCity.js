@@ -33,7 +33,7 @@ function SelectCity() {
 
   return (
     <div dir="rtl">
-      <div className="flex flex-col w-[100%] h-[264px] bg-blue-100 mx-auto mt-20 mb-6 ">
+      <div className="flex flex-col w-[100%] h-[264px] bg-blue-100 mx-auto mt-16 mb-6 ">
         <div className="flex flex-col items-center justify-around w-[100%] h-[264px] ">
           <label className="pt-4 mb-2 text-base font-medium text-gray-900 dark:text-white">
             انتخاب شهر
