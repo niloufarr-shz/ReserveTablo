@@ -1,18 +1,21 @@
 "use client";
 import React from "react";
+import dynamic from "next/dynamic";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import Tablo from "../data/Tablo";
 import Card from "../mediacard/Card";
 
-function Mydata({ filteredData }) {
+function Mydata({ filteredData, filterPrice }) {
+  
   const getRandomItems = (arr, num) => {
     const shuffled = [...arr].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, num);
   };
 
   const randomTablo = getRandomItems(Tablo, 8);
+  console.log("filterPrice:", filterPrice);
 
   return (
     <div className="w-[95%] m-auto  ">
@@ -54,6 +57,10 @@ function Mydata({ filteredData }) {
       )} */}
 
       <Card myfilter={randomTablo} />
+
+      <Card
+        myfilter={filterPrice && Array.isArray(filterPrice) ? filterPrice : []}
+      />
     </div>
   );
 }

@@ -1,9 +1,11 @@
-import React from 'react'
-
-function product() {
+import Tablo from "../../components/data/Tablo"
+import Card from "../../components/mediacard/Card"
+function page() {
   return (
-    <div>product</div>
+    <div className="mt-16">
+    <Card myfilter={Tablo}/>
+    </div>
   )
 }
 
-export default product
+export default page

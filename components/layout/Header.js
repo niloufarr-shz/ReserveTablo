@@ -27,7 +27,7 @@ function Header() {
           <li>صفحه اصلی</li>
         </Link>
 
-        <Link href="/allproduct">
+        <Link href="/product">
           <li>همه محصولات</li>
         </Link>
 
@@ -35,7 +35,7 @@ function Header() {
           <li>تماس با ما</li>
         </Link>
 
-        <Link href="/aboutus">
+        <Link href="/about">
           <li>درباره ما</li>
         </Link>
       </ul>

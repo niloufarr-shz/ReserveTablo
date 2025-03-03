@@ -10,6 +10,8 @@ const Tablo = [
     lat: 35.7916,
     lng: 50.6147,
     mediatype: "عرشه پل",
+    light: "دارد",
+    owner: "سپاه",
   },
   {
     id: "2",
@@ -22,6 +24,8 @@ const Tablo = [
     lat: 35.9439,
     lng: 50.7242,
     mediatype: "استرابورد",
+    light: "ندارد",
+    owner: "نیروی انتظامی",
   },
   {
     id: "3",
@@ -34,6 +38,8 @@ const Tablo = [
     lat: 35.7542,
     lng: 51.3254,
     mediatype: "بیلبورد",
+    light: "ندارد",
+    owner: "شهرداری",
   },
   {
     id: "4",
@@ -46,6 +52,8 @@ const Tablo = [
     lat: 35.9573,
     lng: 50.5411,
     mediatype: "لمپوست",
+    light: "دارد",
+    owner: "شهرداری",
   },
   {
     id: "5",
@@ -58,6 +66,8 @@ const Tablo = [
     lat: 35.9333,
     lng: 50.7333,
     mediatype: "ایستگاه اتوبوس",
+    light: "ندارد",
+    owner: "شهرداری",
   },
   {
     id: "6",
@@ -70,6 +80,8 @@ const Tablo = [
     lat: 35.8333,
     lng: 50.6333,
     mediatype: "تلویزیون شهری",
+    light: "دارد",
+    owner: "نیروی انتظامی",
   },
   {
     id: "7",
@@ -82,6 +94,8 @@ const Tablo = [
     lat: 35.5412,
     lng: 51.2487,
     mediatype: "کیوسک مطبوعاتی",
+    light: "دارد",
+    owner: "نیروی انتظامی",
   },
   {
     id: "8",
@@ -94,6 +108,8 @@ const Tablo = [
     lat: 36.1485,
     lng: 50.8214,
     mediatype: "بدنه ی حمل و نقل عمومی",
+    light: "دارد",
+    owner: "شهرداری",
   },
   {
     id: "9",
@@ -106,6 +122,8 @@ const Tablo = [
     lat: 36.2705,
     lng: 50.0056,
     mediatype: "بیلبورد سه وجهی",
+    light: "دارد",
+    owner: "شهرداری",
   },
   {
     id: "10",
@@ -118,6 +136,8 @@ const Tablo = [
     lat: 35.7418,
     lng: 50.9473,
     mediatype: "پمپ بنزین",
+    light: "دارد",
+    owner: "شهرداری",
   },
   {
     id: "11",
@@ -130,6 +150,8 @@ const Tablo = [
     lat: 35.6582,
     lng: 51.0418,
     mediatype: "عرشه پل",
+    light: "ندارد",
+    owner: "شهرداری",
   },
   {
     id: "12",
@@ -142,6 +164,8 @@ const Tablo = [
     lat: 35.6582,
     lng: 51.0418,
     mediatype: "استرابورد",
+    light: "ندارد",
+    owner: "شهرداری",
   },
   {
     id: "13",
@@ -154,6 +178,8 @@ const Tablo = [
     lat: 35.7149,
     lng: 50.8962,
     mediatype: "بیلبورد",
+    light: "ندارد",
+    owner: "شهرداری",
   },
   {
     id: "14",
@@ -166,6 +192,8 @@ const Tablo = [
     lat: 35.7354,
     lng: 51.1079,
     mediatype: "لمپوست",
+    light: "دارد",
+    owner: "شهرداری",
   },
   {
     id: "15",
@@ -178,6 +206,8 @@ const Tablo = [
     lat: 36.0321,
     lng: 50.6894,
     mediatype: "ایستگاه اتوبوس",
+    light: "دارد",
+    owner: "شهرداری",
   },
   {
     id: "16",
@@ -190,6 +220,8 @@ const Tablo = [
     lat: 36.2514,
     lng: 50.0847,
     mediatype: "تلویزیون شهری",
+    light: "دارد",
+    owner: "شهرداری",
   },
   {
     id: "17",
@@ -202,6 +234,8 @@ const Tablo = [
     lat: 35.4372,
     lng: 51.6321,
     mediatype: "کیوسک مطبوعاتی",
+    light: "دارد",
+    owner: "شهرداری",
   },
   {
     id: "18",
@@ -214,6 +248,8 @@ const Tablo = [
     lat: 35.7039,
     lng: 50.9862,
     mediatype: "بدنه ی حمل و نقل عمومی",
+    light: "دارد",
+    owner: "نیروی انتظامی",
   },
   {
     id: "19",
@@ -226,6 +262,8 @@ const Tablo = [
     lat: 35.4895,
     lng: 51.5578,
     mediatype: "لمپوست",
+    light: "دارد",
+    owner: "نیروی انتظامی",
   },
   {
     id: "20",
@@ -238,6 +276,8 @@ const Tablo = [
     lat: 36.0852,
     lng: 51.2547,
     mediatype: "پمپ بنزین",
+    light: "دارد",
+    owner: "نیروی انتظامی",
   },
   {
     id: "21",
@@ -250,6 +290,8 @@ const Tablo = [
     lat: 36.0521,
     lng: 49.8364,
     mediatype: "عرشه پل",
+    light: "دارد",
+    owner: "نیروی انتظامی",
   },
   {
     id: "22",
@@ -262,6 +304,8 @@ const Tablo = [
     lat: 35.3258,
     lng: 51.6529,
     mediatype: "استرابورد",
+    light: "دارد",
+    owner: "نیروی انتظامی",
   },
   {
     id: "23",
@@ -274,6 +318,8 @@ const Tablo = [
     lat: 35.8974,
     lng: 50.5982,
     mediatype: "بیلبورد",
+    light: "ندارد",
+    owner: "نیروی انتظامی",
   },
   {
     id: "24",
@@ -286,6 +332,8 @@ const Tablo = [
     lat: 35.7512,
     lng: 51.7745,
     mediatype: "لمپوست",
+    light: "ندارد",
+    owner: "نیروی انتظامی",
   },
   {
     id: "25",
@@ -298,6 +346,8 @@ const Tablo = [
     lat: 36.1123,
     lng: 50.5567,
     mediatype: "ایستگاه اتوبوس",
+    light: "ندارد",
+    owner: "نیروی انتظامی",
   },
   {
     id: "26",
@@ -310,6 +360,8 @@ const Tablo = [
     lat: 36.1349,
     lng: 50.2785,
     mediatype: "تلویزیون شهری",
+    light: "ندارد",
+    owner: "نیروی انتظامی",
   },
   {
     id: "27",
@@ -322,6 +374,8 @@ const Tablo = [
     lat: 35.7486,
     lng: 51.8892,
     mediatype: "کیوسک مطبوعاتی",
+    light: "ندارد",
+    owner: "نیروی انتظامی",
   },
   {
     id: "28",
@@ -334,6 +388,8 @@ const Tablo = [
     lat: 35.9134,
     lng: 50.5621,
     mediatype: "استرابورد",
+    light: "ندارد",
+    owner: "نیروی انتظامی",
   },
   {
     id: "29",
@@ -346,6 +402,8 @@ const Tablo = [
     lat: 35.7428,
     lng: 51.9354,
     mediatype: "پمپ بنزین",
+    light: "ندارد",
+    owner: "نیروی انتظامی",
   },
   {
     id: "30",
@@ -358,6 +416,8 @@ const Tablo = [
     lat: 36.0745,
     lng: 50.5789,
     mediatype: "پمپ بنزین",
+    light: "دارد",
+    owner: "شهرداری",
   },
 ];
 

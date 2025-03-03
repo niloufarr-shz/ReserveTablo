@@ -5,7 +5,6 @@ import { IoMdTime } from "react-icons/io";
 import Cookies from "js-cookie";
 
 import api from "../Services/Confgaxios";
-import axios from "axios";
 function Otpform({ setdisplay, phone }) {
   const [accessToken, setAccesstoken] = useState();
 
@@ -16,9 +15,9 @@ function Otpform({ setdisplay, phone }) {
     if (otp.length === 4) {
       //api.post("verifycode", { phoneNumber: phone, code: otp }).then((res) => {
       //});
-      axios
+      api
         .post(
-          "http://localhost:9000/verifycode",
+          "verifycode",
           {
             phoneNumber: phone,
             code: otp,
@@ -28,19 +27,19 @@ function Otpform({ setdisplay, phone }) {
           }
         )
         .then((res) => {
-          console.log(res);
+          setAccesstoken(res.data.accessToken)
           localStorage.setItem("token", res.data.accessToken);
-          location.href = "/";
+         //  location.href = "/";
         });
     }
   };
 
   const tokenHandler = () => {
-    axios
-      .get("http://localhost:9000/isvalidtoken", {
+    api
+      .get("isvalidtoken", {
         headers: {
           Authorization: `Bearer ${accessToken}`,
-          nonce: Math.round(Math.random() * 8), //تکراری نباشه :/
+          nonce: Math.round(Math.random() * 8), 
         },
         withCredentials: true,
       })

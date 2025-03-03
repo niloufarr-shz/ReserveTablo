@@ -1,12 +1,12 @@
-import React from "react";
-import { MapContainer, TileLayer, useMapEvents } from "react-leaflet";
-import { useState, useRef, useEffect } from "react";
+"use client";
+import React, { useState } from "react";
+import dynamic from "next/dynamic";
+import { TileLayer, useMapEvents } from "react-leaflet";
 import { FaLocationDot } from "react-icons/fa6";
 import "leaflet/dist/leaflet.css";
 import Link from "next/link";
 
-
-
+const MapContainerNoSSR = dynamic(() => import("react-leaflet").then(mod => mod.MapContainer), { ssr: false });
 
 function Datadashbord() {
   const [center, setCenter] = useState([35.8327, 50.9915]);
@@ -35,6 +35,7 @@ function Datadashbord() {
       image: e.target.files[0],
     }));
   };
+
   const submitHandler = (e) => {
     e.preventDefault();
     const finalData = {
@@ -60,120 +61,114 @@ function Datadashbord() {
     });
     return null;
   }
+
   return (
-    <>
-      <div className="p-6 bg-gray-50 text-medium text-gray-500   rounded-lg w-full">
-        <h3 className="text-lg font-bold text-gray-900 mb-2">
-          ثبت اطلاعات تابلو
-        </h3>
+    <div className="p-6 bg-gray-50 text-medium text-gray-500 rounded-lg w-full">
+      <h3 className="text-lg font-bold text-gray-900 mb-2">ثبت اطلاعات تابلو</h3>
 
-        <form onSubmit={submitHandler} className="w-[50%]">
-          <label className="block mt-7 mb-2 text-sm  font-medium text-gray-900 ">
-            لیست شهرها
-          </label>
-          <input
-            type="text"
-            id="city"
-            onChange={handleChange}
-            value={formdata.city}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="کرج"
-            required
-          />
+      <form onSubmit={submitHandler} className="w-[50%]">
+        <label className="block mt-7 mb-2 text-sm font-medium text-gray-900 ">
+          لیست شهرها
+        </label>
+        <input
+          type="text"
+          id="city"
+          onChange={handleChange}
+          value={formdata.city}
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          placeholder="کرج"
+          required
+        />
 
-          <label className="block mt-4 mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            ابعاد
-          </label>
-          <input
-            type="text"
-            id="size"
-            onChange={handleChange}
-            value={formdata.size}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="6x2.5"
-            required
-          />
+        <label className="block mt-4 mb-2 text-sm font-medium text-gray-900">
+          ابعاد
+        </label>
+        <input
+          type="text"
+          id="size"
+          onChange={handleChange}
+          value={formdata.size}
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          placeholder="6x2.5"
+          required
+        />
 
-          <label className="block mt-4 mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            آدرس{" "}
-          </label>
-          <input
-            type="text"
-            id="address"
-            onChange={handleChange}
-            value={formdata.address}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=" مثال: خیابان راه آهن، نرسیده به میدان بسیج "
-            required
-          />
+        <label className="block mt-4 mb-2 text-sm font-medium text-gray-900">
+          آدرس{" "}
+        </label>
+        <input
+          type="text"
+          id="address"
+          onChange={handleChange}
+          value={formdata.address}
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          placeholder=" مثال: خیابان راه آهن، نرسیده به میدان بسیج "
+          required
+        />
 
-          <label className="block mt-4 mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            قیمت{" "}
-          </label>
-          <input
-            type="text"
-            id="price"
-            onChange={handleChange}
-            value={formdata.price}
-            className="bg-gray-50 border mb-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=" مثال: 25/000/000 میلیون تومان "
-            required
-          />
+        <label className="block mt-4 mb-2 text-sm font-medium text-gray-900">
+          قیمت{" "}
+        </label>
+        <input
+          type="text"
+          id="price"
+          onChange={handleChange}
+          value={formdata.price}
+          className="bg-gray-50 border mb-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          placeholder=" مثال: 25/000/000 میلیون تومان "
+          required
+        />
 
-          <div className="relative">
-            <MapContainer
-              center={center}
-              zoom={17}
-              className="w-full h-[300px] relative z-0"
-              style={{ height: "300px" }}
-            >
-              <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-              <LocationMarker />
-            </MapContainer>
-
-            {/* پین ثابت در مرکز نقشه */}
-            <div
-              className="absolute left-1/2 top-[50%] z-10 transform -translate-x-1/2 -translate-y-full pointer-events-none"
-              style={{ marginTop: "-20px" }}
-            >
-              <FaLocationDot size={30} color="red" />
-            </div>
-          </div>
-
-          <label className="block mt-4 mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            نوع رسانه{" "}
-          </label>
-          <input
-            type="text"
-            id="mediaType"
-            onChange={handleChange}
-            value={formdata.mediaType}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=" مثال: استرابورد "
-            required
-          />
-
-          <label className="block mt-4 mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            آپلود عکس
-          </label>
-          <input
-            type="file"
-            id="image_upload"
-            onChange={handleImageUpload}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            accept="image/*"
-            required
-          />
-
-          <button
-            className="bg-blue-700 mt-7 text-white px-4 py-3 rounded-lg"
-            type="submit"
+        <div className="relative">
+          <MapContainerNoSSR
+            center={center}
+            zoom={17}
+            className="w-full h-[300px] relative z-0"
+            style={{ height: "300px" }}
           >
-            ثبت اطلاعات
-          </button>
-        </form>
-      </div>
-    </>
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            <LocationMarker />
+          </MapContainerNoSSR>
+
+          {/* پین ثابت در مرکز نقشه */}
+          <div
+            className="absolute left-1/2 top-[50%] z-10 transform -translate-x-1/2 -translate-y-full pointer-events-none"
+            style={{ marginTop: "-20px" }}
+          >
+            <FaLocationDot size={30} color="red" />
+          </div>
+        </div>
+
+        <label className="block mt-4 mb-2 text-sm font-medium text-gray-900">
+          نوع رسانه{" "}
+        </label>
+        <input
+          type="text"
+          id="mediaType"
+          onChange={handleChange}
+          value={formdata.mediaType}
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          placeholder=" مثال: استرابورد "
+          required
+        />
+
+        <label className="block mt-4 mb-2 text-sm font-medium text-gray-900">
+          آپلود عکس
+        </label>
+        <input
+          type="file"
+          id="image_upload"
+          onChange={handleImageUpload}
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          accept="image/*"
+          required
+        />
+
+        <button className="bg-blue-700 mt-7 text-white px-4 py-3 rounded-lg" type="submit">
+          ثبت اطلاعات
+        </button>
+      </form>
+    </div>
   );
 }
 
