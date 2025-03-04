@@ -2,37 +2,53 @@
 import React, { useState, useEffect } from "react";
 import { OtpInput } from "reactjs-otp-input";
 import { IoMdTime } from "react-icons/io";
-import Cookies from "js-cookie";
+import { useDispatch } from "react-redux";
+import { setToken } from "../../redux/features/auth/authSlice";
 
 import api from "../Services/Confgaxios";
+
+
 function Otpform({ setdisplay, phone }) {
   const [accessToken, setAccesstoken] = useState();
-
   const [otp, setOtp] = useState("");
 
-  const handleChange = (otp) => {
-    setOtp(otp);
-    if (otp.length === 4) {
-      //api.post("verifycode", { phoneNumber: phone, code: otp }).then((res) => {
-      //});
+  const dispatch=useDispatch();
+  
+  const handleChange = (inputOtp) => {
+    setOtp(inputOtp); // تنظیم OTP در حالت محلی
+    if (inputOtp.length === 4) {
       api
         .post(
           "verifycode",
           {
             phoneNumber: phone,
-            code: otp,
+            code: inputOtp,
           },
           {
             withCredentials: true,
           }
         )
         .then((res) => {
-          setAccesstoken(res.data.accessToken)
-          localStorage.setItem("token", res.data.accessToken);
-         //  location.href = "/";
+          const accessToken = res.data.accessToken; // دریافت توکن از پاسخ API
+  
+          if (accessToken) {
+            // فراخوانی Action setToken با استفاده از توکن دریافتی
+            dispatch(setToken(accessToken));
+  
+            // ذخیره توکن در حالت محلی (اختیونی)
+            setAccesstoken(accessToken);
+          } else {
+            console.error("Access Token not found in API response:", res.data);
+            alert("خطا: توکن دسترسی در پاسخ API وجود ندارد!");
+          }
+        })
+        .catch((error) => {
+          console.error("Error verifying OTP:", error);
+          alert("کد واردشده نامعتبر است!");
         });
     }
   };
+
 
   const tokenHandler = () => {
     api

@@ -43,7 +43,7 @@ const Tablo = [
   },
   {
     id: "4",
-    avatar: "/img/pic4.jpg",
+    avatar: "/img/pic4.jpeg",
     province: "البرز",
     city: "نظرآباد",
     size: "4×2 متر",

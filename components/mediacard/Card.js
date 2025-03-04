@@ -14,6 +14,7 @@ function Card({ myfilter }) {
           <Image
             className="w-full h-56"
             src={card.avatar}
+            alt={card.mediatype}
             width={1500}
             height={1500}
           />

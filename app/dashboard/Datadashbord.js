@@ -4,14 +4,13 @@ import dynamic from "next/dynamic";
 import { TileLayer, useMapEvents } from "react-leaflet";
 import { FaLocationDot } from "react-icons/fa6";
 import "leaflet/dist/leaflet.css";
-import Link from "next/link";
 
+// Dynamic import برای MapContainer
 const MapContainerNoSSR = dynamic(() => import("react-leaflet").then(mod => mod.MapContainer), { ssr: false });
 
 function Datadashbord() {
   const [center, setCenter] = useState([35.8327, 50.9915]);
   const [mapCenter, setMapCenter] = useState(center);
-  const [event, setEvent] = useState("create");
   const [formdata, setFormdata] = useState({
     city: "",
     size: "",
@@ -21,6 +20,7 @@ function Datadashbord() {
     image: null,
   });
 
+  // مدیریت تغییرات فرم
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormdata((prevData) => ({
@@ -29,6 +29,7 @@ function Datadashbord() {
     }));
   };
 
+  // مدیریت آپلود عکس
   const handleImageUpload = (e) => {
     setFormdata((prevData) => ({
       ...prevData,
@@ -36,6 +37,7 @@ function Datadashbord() {
     }));
   };
 
+  // ارسال فرم
   const submitHandler = (e) => {
     e.preventDefault();
     const finalData = {
@@ -48,9 +50,13 @@ function Datadashbord() {
       mapCenter: mapCenter,
     };
 
-    console.log(finalData);
+    // چاپ داده‌ها فقط در محیط مرورگر
+    if (typeof window !== "undefined") {
+      console.log(finalData);
+    }
   };
 
+  // ردیابی حرکت نقشه
   function LocationMarker() {
     useMapEvents({
       moveend: (e) => {

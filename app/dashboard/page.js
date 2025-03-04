@@ -1,20 +1,20 @@
 "use client";
 import { useState } from "react";
 import dynamic from "next/dynamic";
-import { FaLocationDot } from "react-icons/fa6";
-import Link from "next/link";
-import Datadashbord from "./Datadashbord";
 
 // Dynamic import برای غیرفعال کردن SSR برای کامپوننت نقشه
-const MapContainerNoSSR = dynamic(() => import("react-leaflet").then(mod => mod.MapContainer), { ssr: false });
+const DatadashbordNoSSR = dynamic(() => import("./Datadashbord"), { ssr: false });
 
 function Page() {
   const [center, setCenter] = useState([35.8327, 50.9915]);
   const [event, setEvent] = useState("create");
 
+  // مدیریت localStorage و location فقط در محیط مرورگر
   const exitHandler = () => {
-    localStorage.removeItem("token");
-    location.href = "/";
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("token");
+      window.location.href = "/";
+    }
   };
 
   return (
@@ -84,7 +84,8 @@ function Page() {
           </li>
         </ul>
 
-        {event === "create" && <Datadashbord />}
+        {/* نمایش کامپوننت Datadashbord فقط در حالت "create" */}
+        {event === "create" && <DatadashbordNoSSR />}
       </div>
     </>
   );
