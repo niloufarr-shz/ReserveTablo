@@ -12,14 +12,14 @@ function Page() {
   // مدیریت localStorage و location فقط در محیط مرورگر
   const exitHandler = () => {
     if (typeof window !== "undefined") {
-      localStorage.removeItem("token");
+      localStorage.removeItem("accessToken");
       window.location.href = "/";
     }
   };
 
   return (
     <>
-      <div dir="rtl" className="md:flex mt-20">
+      <div dir="rtl" className="md:flex mt-20 w-full">
         <ul className="flex-column space-y space-y-4 text-sm font-medium text-gray-500 md:me-4 mb-4 md:mb-0">
           <li>
             <button

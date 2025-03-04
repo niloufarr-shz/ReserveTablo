@@ -1,22 +1,24 @@
-//"use client";
+"use client";
 import React, { useState, useEffect } from "react";
 import { OtpInput } from "reactjs-otp-input";
 import { IoMdTime } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { setToken } from "../../redux/features/auth/authSlice";
-
+import { useRouter } from "next/navigation";
 import api from "../Services/Confgaxios";
-
+import toast, { Toaster } from "react-hot-toast";
 
 function Otpform({ setdisplay, phone }) {
+  const router = useRouter();
   const [accessToken, setAccesstoken] = useState();
   const [otp, setOtp] = useState("");
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
-  const dispatch=useDispatch();
-  
   const handleChange = (inputOtp) => {
     setOtp(inputOtp); // تنظیم OTP در حالت محلی
     if (inputOtp.length === 4) {
+      setLoading(true);
       api
         .post(
           "verifycode",
@@ -30,11 +32,11 @@ function Otpform({ setdisplay, phone }) {
         )
         .then((res) => {
           const accessToken = res.data.accessToken; // دریافت توکن از پاسخ API
-  
+
           if (accessToken) {
             // فراخوانی Action setToken با استفاده از توکن دریافتی
             dispatch(setToken(accessToken));
-  
+            router.push("/dashboard");
             // ذخیره توکن در حالت محلی (اختیونی)
             setAccesstoken(accessToken);
           } else {
@@ -44,18 +46,17 @@ function Otpform({ setdisplay, phone }) {
         })
         .catch((error) => {
           console.error("Error verifying OTP:", error);
-          alert("کد واردشده نامعتبر است!");
+          toast.error("کد وارد شده نا معتبر است");
         });
     }
   };
-
 
   const tokenHandler = () => {
     api
       .get("isvalidtoken", {
         headers: {
           Authorization: `Bearer ${accessToken}`,
-          nonce: Math.round(Math.random() * 8), 
+          nonce: Math.round(Math.random() * 8),
         },
         withCredentials: true,
       })
@@ -88,6 +89,7 @@ function Otpform({ setdisplay, phone }) {
 
   return (
     <>
+      <Toaster />
       <div
         className={`m-auto ${setdisplay} h-screen w-full flex flex-col items-center bg-blue-50 font-vazir`}
       >
@@ -144,7 +146,9 @@ function Otpform({ setdisplay, phone }) {
               onClick={tokenHandler}
               className="flex h-[50px] w-[250px] items-center justify-center rounded-[16px] bg-blue-500  "
             >
-              <p className="text-[24px]  text-secondary "> ورود </p>
+              <p dir="rtl" className="text-[24px]  text-secondary ">{`${
+                loading ? "در حال ورود ..." : "ارسال کد"
+              }`}</p>
             </button>
           </div>
         </div>

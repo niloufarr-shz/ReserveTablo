@@ -1,9 +1,8 @@
-import React from 'react'
-
-function loading() {
+import Spin from "../../../components/util/Spin";
+function Loading() {
   return (
-    <div className='mt-48'>loading . . .</div>
-  )
+   <Spin/>
+  );
 }
 
-export default loading
+export default Loading;

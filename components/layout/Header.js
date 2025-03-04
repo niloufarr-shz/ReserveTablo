@@ -8,7 +8,7 @@ function Header() {
 
   useEffect(() => {
   // localStorage.setItem("token", "niloofar");
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("accessToken");
     if (token) {
       setButtonText("داشبورد");
     } else {

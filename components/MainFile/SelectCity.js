@@ -4,6 +4,7 @@ import Mydata from "../main/Mydata";
 import Tablo from "../data/Tablo";
 import Searchdata from "../main/Searchdata";
 import Filterdata from "../main/Filterdata";
+
 function SelectCity() {
   const [selectedCity, setSelectedCity] = useState("کرج");
   const [selectedMediaType, setSelectedMediaType] = useState("عرشه پل");
@@ -12,6 +13,11 @@ function SelectCity() {
   const [filterPrice, setFilterPrice] = useState([]);
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
+
+  // تابع فرمت‌بندی عدد به صورت سه رقم سه رقم
+  const formatNumber = (value) => {
+    return value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
 
   function handleSearch() {
     const filteredData = Tablo.filter(
@@ -26,8 +32,11 @@ function SelectCity() {
   }
 
   function handlePriceFilter() {
+    const min = Number(minPrice.replace(/,/g, "")); // حذف کاما برای محاسبات
+    const max = Number(maxPrice.replace(/,/g, "")); // حذف کاما برای محاسبات
+
     const filterPrice = Tablo.filter(
-      (item) => item.price >= Number(minPrice) && item.price <= Number(maxPrice)
+      (item) => item.price >= min && item.price <= max
     );
 
     setFilteredData(filterPrice);
@@ -46,8 +55,8 @@ function SelectCity() {
 
   return (
     <div dir="rtl">
-      <div className="flex flex-col w-[100%] h-[500px] sm:h-[264px] bg-blue-100 mx-auto mt-16 mb-6 ">
-        <div className="flex flex-col  sm:flex-row  items-center justify-around w-[100%] h-[400px] ">
+      <div className="flex flex-col w-[100%] h-[520px] sm:h-[264px] bg-blue-100 mx-auto mt-16 mb-6 ">
+        <div className="flex flex-col sm:flex-row items-center justify-around w-[100%] h-[400px] ">
           <label className="pt-4 mb-2 text-base font-medium text-gray-900 dark:text-white">
             انتخاب شهر
           </label>
@@ -55,7 +64,7 @@ function SelectCity() {
             style={{ appearance: "none" }}
             value={selectedCity}
             onChange={handleCityChange}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-blue-500 focus:ring-blue-500  focus:border-blue-500 block w-[300px] p-2.5   "
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-blue-500 focus:ring-blue-500 focus:border-blue-500 block w-[300px] p-2.5"
           >
             {Array.from(new Set(Tablo.map((mamad) => mamad.city))).map(
               (uniqueCity) => (
@@ -73,7 +82,7 @@ function SelectCity() {
             style={{ appearance: "none" }}
             value={selectedMediaType}
             onChange={handleMediaTypeChange}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-blue-500  focus:ring-blue-500 focus:border-blue-500 block w-[300px] p-2.5 "
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-blue-500 focus:ring-blue-500 focus:border-blue-500 block w-[300px] p-2.5"
           >
             {Array.from(new Set(Tablo.map((mamad) => mamad.mediatype))).map(
               (uniqueMediatype) => (
@@ -86,30 +95,32 @@ function SelectCity() {
 
           <button
             onClick={handleSearch}
-            className="w-[150px] mt-2 p-2 mb-2 bg-blue-800 text-white rounded-lg text-center"
+            className="w-[150px] mt-2 p-2 mb-3 bg-blue-800 text-white rounded-lg text-center"
           >
             جستجو
           </button>
         </div>
-        <div className="flex flex-col sm:flex-row items-center justify-around h-[400px] ">
-          <label className="sm:mb-9">حداقل قیمت:</label>
+        <hr className="border-slate-600 mt-6 m-auto w-[90%] h-[1px]" />
+        <div className="flex flex-col sm:flex-row items-center sm:mt-6 justify-around h-[400px] ">
+          <label className="mt-5 sm:mb-9">حداقل قیمت:</label>
           <input
             value={minPrice}
-            onChange={(e) => setMinPrice(e.target.value)}
+            onChange={(e) => setMinPrice(formatNumber(e.target.value))}
             type="text"
-            className="sm:mb-9 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-blue-500  focus:ring-blue-500 focus:border-blue-500 block w-[300px] p-2.5 "
+            inputMode="numeric"
+            className="sm:mb-9 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-blue-500 focus:ring-blue-500 focus:border-blue-500 block w-[300px] p-2.5"
           />
           <label className="sm:mb-9">حداکثر قیمت:</label>
           <input
             value={maxPrice}
-            onChange={(e) => setMaxPrice(e.target.value)}
+            onChange={(e) => setMaxPrice(formatNumber(e.target.value))}
             type="text"
             inputMode="numeric"
-            className="sm:mb-9 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-blue-500  focus:ring-blue-500 focus:border-blue-500 block w-[300px] p-2.5"
+            className="sm:mb-9 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-blue-500 focus:ring-blue-500 focus:border-blue-500 block w-[300px] p-2.5"
           />
           <button
             onClick={handlePriceFilter}
-            className="w-[150px] p-2 sm:mb-9 bg-blue-800 text-white rounded-lg text-center"
+            className="w-[150px] p-2 mb-3 sm:mb-9 bg-blue-800 text-white rounded-lg text-center"
           >
             فیلتر قیمت
           </button>

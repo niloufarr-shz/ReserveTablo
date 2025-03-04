@@ -29,6 +29,7 @@ const authSlice = createSlice({
     setToken: (state, action) => {
       state.token = action.payload; // ذخیره توکن در State
       localStorage.setItem('accessToken', action.payload); // ذخیره توکن در localStorage
+      
     },
     // Reducer برای خروج کاربر
     logout: (state) => {

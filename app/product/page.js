@@ -21,12 +21,13 @@ function Page() {
   };
 
   return (
-    <div className="mt-16">
+    <div className="mt-16 mb-5">
       {/* نمایش داده‌های صفحه فعلی */}
       <Card myfilter={currentItems} />
 
       {/* Pagination Component */}
       <ReactPaginate
+        
         breakLabel="..."
         nextLabel="بعدی >"
         onPageChange={handlePageClick}

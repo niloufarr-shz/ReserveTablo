@@ -84,9 +84,9 @@ function Phoneforme() {
                 <div
                   className={`size-8 mr-3 ${
                     loader ? "block" : "hidden"
-                  }  rounded-full border-4 border-secondary text-secondary border-r-bg animate-spin`}
+                  }  rounded-full border-x-4  border-cyan-400 text-red-400 border-r-bg animate-spin`}
                 ></div>
-                <p> ارسال کد</p>
+                <p className="text-white"> ارسال کد</p>
               </button>
             </form>
           </div>

@@ -27,6 +27,7 @@
     "react-multi-date-picker": "^4.5.2",
     "react-paginate": "^8.3.0",
     "react-redux": "^9.2.0",
+    "react-router-dom": "^7.2.0",
     "reactjs-otp-input": "^2.0.10",
     "swiper": "^11.2.4"
   },

@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { TileLayer, useMapEvents } from "react-leaflet";
 import { FaLocationDot } from "react-icons/fa6";
 import "leaflet/dist/leaflet.css";
+import toast, { Toaster } from "react-hot-toast";
 
 // Dynamic import برای MapContainer
 const MapContainerNoSSR = dynamic(() => import("react-leaflet").then(mod => mod.MapContainer), { ssr: false });
@@ -53,6 +54,7 @@ function Datadashbord() {
     // چاپ داده‌ها فقط در محیط مرورگر
     if (typeof window !== "undefined") {
       console.log(finalData);
+      toast.success("اطلاعات پس از تایید مدیر داخل سایت نمایش داده میشود")
     }
   };
 
@@ -69,6 +71,8 @@ function Datadashbord() {
   }
 
   return (
+    <>
+    <Toaster/>
     <div className="p-6 bg-gray-50 text-medium text-gray-500 rounded-lg w-full">
       <h3 className="text-lg font-bold text-gray-900 mb-2">ثبت اطلاعات تابلو</h3>
 
@@ -175,6 +179,7 @@ function Datadashbord() {
         </button>
       </form>
     </div>
+    </>
   );
 }
 

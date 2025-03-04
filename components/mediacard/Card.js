@@ -22,21 +22,21 @@ function Card({ myfilter }) {
 
           <div className="flex flex-col items-center justify-center  ">
             <div className="flex flex-row items-center justify-center">
-              <p className="text-right m-3 bg-white rounded-xl p-[1px]">
+              <p className="text-right text-sm p-1 m-3 bg-white rounded-xl ">
                 {card.province} / {card.city}{" "}
               </p>
-              <p className="text-right bg-white rounded-xl p-[1px]">
+              <p className="text-right bg-white rounded-xl p-1">
                 {card.size}
               </p>
-              <p className="text-right bg-white rounded-xl p-[1px] ml-1 mr-3">
+              <p className="text-right bg-white rounded-xl p-1 ml-1 mr-3">
                 {card.mediatype}
               </p>
             </div>
             <div className="flex flex-row items-center justify-center  ">
-              <p className="text-right bg-white rounded-xl p-[1px] mr-1 ">
+              <p className="text-right bg-white rounded-xl p-1 mr-1 ">
                 روشنایی: {card.light}
               </p>
-              <p className="text-right bg-white rounded-xl p-[1px] mr-1">
+              <p className="text-right bg-white rounded-xl p-1 mr-1">
                 ارگان: {card.owner}
               </p>
             </div>

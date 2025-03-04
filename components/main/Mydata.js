@@ -1,5 +1,7 @@
 "use client";
 import React from "react";
+import { useState } from "react";
+import ReactPaginate from "react-paginate";
 import dynamic from "next/dynamic";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -8,7 +10,6 @@ import Tablo from "../data/Tablo";
 import Card from "../mediacard/Card";
 
 function Mydata({ filteredData, filterPrice }) {
-  
   const getRandomItems = (arr, num) => {
     const shuffled = [...arr].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, num);
@@ -16,6 +17,16 @@ function Mydata({ filteredData, filterPrice }) {
 
   const randomTablo = getRandomItems(Tablo, 8);
   console.log("filterPrice:", filterPrice);
+
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 8;
+
+  const offset = currentPage * itemsPerPage;
+  const currentItems = Tablo.slice(offset, offset + itemsPerPage);
+
+  const handlePageClick = ({ selected }) => {
+    setCurrentPage(selected);
+  };
 
   return (
     <div className="w-[95%] m-auto  ">
@@ -25,38 +36,21 @@ function Mydata({ filteredData, filterPrice }) {
         </h2>
         <hr className="border-slate-600 w-[50%] sm:w-[85%] md:w-[77%] 2xl:w-[88%] h-[1px]" />
       </div>
-      {/* {filteredData.length === 0 ? (
-        <div className="w-[350px] h-[70px] m-auto mt-5 ">
-          <p className="text-center text-[24px] border text-red-700 border-black ">
-            موردی یافت نشد
-          </p>
-        </div>
-      ) : (
-        <Swiper
-          className="w-full "
-          spaceBetween={10}
-          slidesPerView={1}
-          freeMode={true}
-          grabCursor={true}
-          autoplay={false}
-          breakpoints={{
-            320: { slidesPerView: 1.5 },
-            640: { slidesPerView: 2 },
-            700: { slidesPerView: 3 },
-            1024: { slidesPerView: 3 },
-            1280: { slidesPerView: 3 },
-            1536: { slidesPerView: 3 },
-          }}
-        >
-          {filteredData.map((mamad) => (
-            <SwiperSlide className="bg-red-200" key={mamad.id}>
-              <Card myfilter={[mamad]} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      )} */}
 
       <Card myfilter={randomTablo} />
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel=">"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={3}
+        pageCount={Math.ceil(Tablo.length / itemsPerPage)}
+        previousLabel="< "
+        containerClassName="pagination flex  justify-center mt-8 space-x-2"
+        activeClassName="bg-blue-700 text-white rounded-lg px-3 py-1"
+        pageClassName="px-3 py-1 bg-blue-300 rounded-lg text-blue-100 hover:bg-blue-200"
+        previousClassName="px-3 py-1 rounded-full bg-gray-300  hover:bg-blue-200 "
+        nextClassName="px-3 py-1 rounded-full bg-gray-300 hover:bg-blue-200 "
+      />
 
       <Card
         myfilter={filterPrice && Array.isArray(filterPrice) ? filterPrice : []}
