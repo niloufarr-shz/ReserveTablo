@@ -18,13 +18,15 @@ import { GiFilmProjector } from "react-icons/gi";
 import { TfiRulerAlt2 } from "react-icons/tfi";
 import { GiPathDistance } from "react-icons/gi";
 import { GiMoneyStack } from "react-icons/gi";
-
 import DatePicker, { DateObject } from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import "react-datepicker/dist/react-datepicker.css";
 import "./DatePickerStyles.css";
 import toast, { Toaster } from "react-hot-toast";
+import { useRouter } from "next/navigation";
+
+import Shop from "../../buypage/page";
 
 function MapComponent({ lat, lng, address }) {
   const customIcon = new L.Icon({
@@ -68,14 +70,19 @@ function MapComponent({ lat, lng, address }) {
   );
 }
 export default function Page() {
+  const [dis, setDis] = useState(true);
+  const router = useRouter();
   const params = useParams();
-  const reserveHandler=()=>{
-    toast.success("با موفقیت به سبد خرید شما اضافه شد")
-  }
+
   const detail = Tablo.filter((nil) => nil.id == params.detail);
   const mytype = Tablo.filter(
     (shayan) => shayan.mediatype == detail[0].mediatype
   );
+
+  const reserveHandler = () => {
+    router.push("/product/" + detail[0].id + "/" + detail[0].id);
+    setDis(false);
+  };
 
   const [dateRange, setDateRange] = useState([null, null]);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -102,7 +109,6 @@ export default function Page() {
   };
 
   function PriceInput() {
-    
     const [price, setPrice] = useState("");
     const [isValid, setIsValid] = useState(true);
 
@@ -126,7 +132,6 @@ export default function Page() {
     };
 
     return (
-      
       <div className="flex mt-10 flex-row justify-center  items-center  w-full">
         {detail.map((item) => (
           <label
@@ -156,7 +161,8 @@ export default function Page() {
 
   return (
     <>
-    <Toaster/>
+      <Toaster />
+      <Shop display={dis ? "hidden" : "flex"} detail={detail[0]} />
       {detail.map((tablo) => (
         <div
           dir="rtl"
@@ -280,7 +286,10 @@ export default function Page() {
 
                 <PriceInput />
                 <div className="flex justify-center mt-36 ">
-                  <button onClick={reserveHandler} className="bg-blue-800 w-[150px] h-8 text-white rounded">
+                  <button
+                    onClick={reserveHandler}
+                    className="bg-blue-800 w-[150px] h-8 text-white rounded"
+                  >
                     {" "}
                     ثبت{" "}
                   </button>

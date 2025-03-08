@@ -28,14 +28,20 @@ function Phoneforme() {
     event.preventDefault();
 
     setLoader(true);
-    api
-      .get(`getNumberAndSnedSms?phoneNumber=${phone}`)
-      .then((res) =>
-        res.status == 200
-          ? toast.success("پیام با موفقیت ارسال شد") && setDisplay(false)
-          : toast.error("خطا در ارسال کد لطفا دوباره امتحان کنید")
-      )
-      .catch((error) => console.error("Error:", error));
+    const sendSms = async () => {
+      try {
+      const res = await api.get(`getNumberAndSnedSms?phoneNumber=${phone}`);
+      res.status == 200
+        ? toast.success("پیام با موفقیت ارسال شد") && setDisplay(false)
+        : toast.error("خطا در ارسال کد لطفا دوباره امتحان کنید");
+      } catch (error) {
+      console.error("Error:", error);
+      } finally {
+      setLoader(false);
+      }
+    };
+
+    sendSms();
   };
 
   return (
